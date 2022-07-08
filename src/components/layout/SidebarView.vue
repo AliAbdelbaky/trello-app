@@ -1,6 +1,8 @@
 <template lang="">
-  <div>
-    sidebar
+  <div class="sidebar">
+  <div class="img_container">
+    <img src="" />
+  </div>
   </div>
 </template>
 <script>
@@ -8,6 +10,3 @@ export default {
   
 }
 </script>
-<style lang="">
-  
-</style>
