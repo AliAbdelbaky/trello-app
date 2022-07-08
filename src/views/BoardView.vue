@@ -1,8 +1,7 @@
 <template>
   <div class="board">
     <base-button>Hello From Global base button</base-button>
-    <h2>{{ title }}</h2>
-    <button @click="add">adddddd</button>
+    <h2>{{title}}</h2>
   </div>
 </template>
 
@@ -15,10 +14,5 @@ export default {
     return { title };
   },
   components: {},
-  methods: {
-    add() {
-      this.$store.dispatch('BoardModule/addAction');
-    },
-  },
 };
 </script>
