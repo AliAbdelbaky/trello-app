@@ -25,6 +25,7 @@
           class="add_task_input"
           placeholder="+ Enter new task"
           @keyup.enter="createTask($event, item.tasks)"
+          @blur="createTask($event, item.tasks)"
         />
       </div>
     </div>
