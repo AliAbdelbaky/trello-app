@@ -13,7 +13,7 @@ export default {
           userAssigned: null
         },
         {
-          description: 'شسيشسيشسيشسيشسيشسي',
+          description: 'culpa officiis! Temporibus maiores vitae veniam dolores eaque, et neque nulla, debitis unde sunt perspiciatis harum nemo voluptatum dolore aperiam.',
           name: 'second task',
           id: uuid(),
           userAssigned: null
@@ -47,6 +47,61 @@ export default {
           userAssigned: null
         }
       ]
-    }
+    },
+    {
+      name: 'done',
+      tasks: [
+        {
+          description: '',
+          name: 'first task',
+          id: uuid(),
+          userAssigned: null
+        }
+      ]
+    },
+    {
+      name: 'done',
+      tasks: [
+        {
+          description: '',
+          name: 'first task',
+          id: uuid(),
+          userAssigned: null
+        }
+      ]
+    },
+    {
+      name: 'done',
+      tasks: [
+        {
+          description: '',
+          name: 'first task',
+          id: uuid(),
+          userAssigned: null
+        }
+      ]
+    },
+    {
+      name: 'done',
+      tasks: [
+        {
+          description: '',
+          name: 'first task',
+          id: uuid(),
+          userAssigned: null
+        }
+      ]
+    },
+    {
+      name: 'done',
+      tasks: [
+        {
+          description: '',
+          name: 'first task',
+          id: uuid(),
+          userAssigned: null
+        }
+      ]
+    },
   ]
 }

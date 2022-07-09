@@ -1,0 +1,13 @@
+.card
+  @include mainTransition
+  @include mainBoxShadow
+  border: 1px solid transparent !important
+  color: rgb(var(--sec-font-color))
+  background: rgba(var(--main-bg-color), 0.8 ) !important
+  backdrop-filter: blur(15px)
+  margin-top: 0.2rem
+  .card-header
+    background: transparent
+    border: none
+    text-transform: uppercase
+    font-weight: 600

@@ -7,7 +7,7 @@
   .content
     @include mainTransition
     @include mainBoxShadow
-    background: var(--main-bg-color)
+    background: rgb(var(--main-bg-color))
     border-radius: 6px
     padding: 0.5rem
     display: flex
@@ -26,14 +26,14 @@
         justify-content: flex-start
         align-items: center
         text-align: right
-        color: var(--sec-font-color)
+        color: rgb(var(--sec-font-color))
         font-size: 14px
         .user-info-img-container
           position: relative
           height: fit-content
           display: flex
           img
-            border: 1px solid var(--main-bg-color)
+            border: 1px solid rgb(var(--main-bg-color))
             width: 40px
             height: 40px
             object-fit: cover
@@ -47,7 +47,7 @@
             line-height: inherit
             height: 10px
             border-radius: 50%
-            border: 2px solid var(--main-bg-color)
+            border: 2px solid rgb(var(--main-bg-color))
             background: #28c76f
             z-index: 55
         .user-info-desc

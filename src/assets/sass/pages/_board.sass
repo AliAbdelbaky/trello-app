@@ -1,0 +1,32 @@
+.board-page
+  margin-top: 1rem
+  height: 88vh
+  .column-container
+    height: 100%
+    display: flex
+    align-items: flex-start
+    gap: 10px
+    overflow-y: hidden
+    overflow-x: scroll
+    @include scrollbars(5px, #888, #ffffff00)
+    .column
+      min-width: 350px
+      .tasks-list
+        .task
+          background: rgba(var(--main-bg-color), 1 )
+          border-radius: 5px
+          @include mainBoxShadow
+          padding: 5px 10px
+          margin-bottom: 0.6rem
+          display: flex
+          flex-direction: column
+          .title,.desc
+            font-weight: 600
+            text-transform: capitalize
+            min-width: 100%
+            display: block
+          .desc
+            margin: 0.4rem 0rem 
+            font-weight: 400
+            font-size: 13px
+

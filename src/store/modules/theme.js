@@ -11,7 +11,7 @@ export const mutations = {
     if (payload) {
       bodyDiv.classList.add("light-theme");
       bodyDiv.classList.remove("dark-theme");
-      localStorage.setItem("theme", "currentTheme");
+      localStorage.setItem("theme", "light-theme");
     } else {
       bodyDiv.classList.add("dark-theme");
       bodyDiv.classList.remove("light-theme");
