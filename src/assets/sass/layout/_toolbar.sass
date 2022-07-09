@@ -4,13 +4,55 @@
   left: 0
   right: 0
   width: 100%
-  background: #ffffff48
-  backdrop-filter: blur(10px)
   .content
     @include mainTransition
     @include mainBoxShadow
-    background: #fff
+    background: var(--main-bg-color)
     border-radius: 6px
-    margin: 0.3rem
-    padding: 1rem
-    
+    padding: 0.5rem
+    display: flex
+    flex-direction: row-reverse
+    justify-content: flex-start
+    gap: 10px
+    .user-info
+      display: flex
+      flex-direction: row-reverse
+      justify-content: flex-start
+      align-items: center
+      text-align: right
+      color: var(--sec-font-color)
+      font-size: 14px
+      .user-info-img-container
+        position: relative
+        height: fit-content
+        display: flex
+        img
+          border: 1px solid var(--main-bg-color)
+          width: 40px
+          height: 40px
+          object-fit: cover
+          border-radius: 50%
+        &::after
+          content: ""
+          position: absolute
+          bottom: 2px
+          right: 0
+          width: 10px
+          line-height: inherit
+          height: 10px
+          border-radius: 50%
+          border: 2px solid var(--main-bg-color)
+          background: #28c76f
+          z-index: 55
+      .user-info-desc
+        margin-right: 4px
+        .user-name
+          font-weight: 600
+          text-transform: capitalize
+        .user-title
+          opacity: 0.8
+          text-transform: lowercase
+    .theme-toggler
+      display: flex
+      align-items: center
+      cursor: pointer

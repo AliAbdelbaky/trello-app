@@ -2,6 +2,7 @@ import {
   createStore
 } from "vuex";
 import * as BoardModule from './modules/board';
+import * as ThemeModule from './modules/theme';
 import {
   saveStatePlugin
 } from "@/utils";
@@ -10,9 +11,14 @@ export default createStore({
   plugins: [saveStatePlugin],
   state: {},
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+
+  },
+  actions: {
+
+  },
   modules: {
-    BoardModule
+    BoardModule,
+    ThemeModule
   },
 });

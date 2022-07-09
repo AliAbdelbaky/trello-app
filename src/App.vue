@@ -7,6 +7,9 @@ export default {
   components: {
     LayoutViewVue,
   },
+  mounted() {
+    this.$store.dispatch("ThemeModule/initTheme");
+  },
 };
 </script>
 <style lang="scss">

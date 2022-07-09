@@ -1,6 +1,6 @@
 <template>
   <div class="icon-wrapper">
-    <div v-html="svg"> </div>
+    <div v-html="svg"></div>
     <slot></slot>
   </div>
 </template>
@@ -36,9 +36,10 @@ export default {
 .icon-wrapper {
   display: inline-flex;
   align-items: center;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--sec-font-color);
   font-size: 1rem;
   font-weight: 600;
+  transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .icon {
   stroke: currentColor;
