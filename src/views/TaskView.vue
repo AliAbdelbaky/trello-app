@@ -11,17 +11,12 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
 export default {
   props: {
     task: {
       type: Object,
       required: true,
     },
-  },
-  setup() {
-    const title = ref("Tasks view");
-    return { title };
   },
 };
 </script>

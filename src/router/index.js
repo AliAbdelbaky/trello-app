@@ -15,7 +15,6 @@ const routes = [{
     component: () =>
       import("@/views/TaskView.vue"),
     beforeEnter: (to, from, next) => {
-      console.log(to.params.id)
       store.dispatch('BoardModule/setSingleTask', to.params.id).then(() => {
         const single_task = store.state.BoardModule.signleTask
         to.params.task = single_task

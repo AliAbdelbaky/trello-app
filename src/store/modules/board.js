@@ -20,7 +20,6 @@ export const actions = {
     getters
   }, task_id) {
     let task = await getters.getTask(task_id)
-    console.log(getters.getTask(task_id))
     commit('SET_SINGLE_TASK', task)
   }
 }
