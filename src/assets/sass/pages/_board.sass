@@ -22,6 +22,8 @@
           display: flex
           flex-direction: column
           cursor: pointer
+          &:hover
+            transform: scale(0.98)
           .title,.desc
             font-weight: 600
             text-transform: capitalize
@@ -31,8 +33,11 @@
             margin: 0.4rem 0rem
             font-weight: 400
             font-size: 13px
-          &:hover
-            transform: scale(0.98)
+      .add_task_input
+        background: transparent
+        padding: 10px
+        outline: none
+        border: none
   .task-bg
     position: fixed
     top: 0
@@ -40,8 +45,7 @@
     right: 0
     bottom: 0
     z-index: 999
-    background: #21252929
-    backdrop-filter: blur(2px)
+    background: #212529a8
     display: flex
     align-items: center
     justify-content: center

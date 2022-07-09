@@ -1,4 +1,7 @@
 import defaultBoard from "@/default-board"
+import {
+  uuid
+} from "@/utils"
 const board = JSON.parse(localStorage.getItem('boards')) || defaultBoard
 
 
@@ -12,6 +15,23 @@ export const state = {
 export const mutations = {
   SET_SINGLE_TASK(state, payload) {
     state.signleTask = payload
+  },
+  ADD_TASK(state, {
+    tasks,
+    name
+  }) {
+    tasks.push({
+      name,
+      id: uuid(),
+      description: ''
+    })
+  },
+  UPDATE_TASK(state, {
+    task,
+    key,
+    value
+  }) {
+    task[key] = value
   }
 }
 export const actions = {

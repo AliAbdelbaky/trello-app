@@ -20,6 +20,12 @@
             </div>
           </div>
         </div>
+        <input
+          type="text"
+          class="add_task_input"
+          placeholder="+ Enter new task"
+          @keyup.enter="createTask($event, item.tasks)"
+        />
       </div>
     </div>
   </div>
@@ -30,6 +36,17 @@ export default {
   methods: {
     goToTask(id) {
       this.$router.push({ name: "task", params: { id: id } });
+    },
+    createTask(e, tasks) {
+      if (!e.target.value == "") {
+        this.$store.commit("BoardModule/ADD_TASK", {
+          tasks,
+          name: e.target.value,
+        });
+      } else {
+        alert("can not add empty task :)");
+      }
+      e.target.value = "";
     },
   },
 };
