@@ -11,6 +11,12 @@ body
   margin-left: auto
   height: 200vh
   padding: 1rem
+  @include mainTransition
+  &.sidebar-visible
+    width: calc( 100% - $sidebarWidthOpen )
+  &.sidebar-over
+    width: 100%
+
 ::-webkit-scrollbar
   width: 6px
 ::-webkit-scrollbar-track

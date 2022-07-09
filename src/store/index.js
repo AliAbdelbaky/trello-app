@@ -3,6 +3,7 @@ import {
 } from "vuex";
 import * as BoardModule from './modules/board';
 import * as ThemeModule from './modules/theme';
+import * as SidebarModule from './modules/sidebar';
 import {
   saveStatePlugin
 } from "@/utils";
@@ -19,6 +20,7 @@ export default createStore({
   },
   modules: {
     BoardModule,
-    ThemeModule
+    ThemeModule,
+    SidebarModule
   },
 });

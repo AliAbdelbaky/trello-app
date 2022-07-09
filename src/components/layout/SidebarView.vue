@@ -1,5 +1,9 @@
 <template lang="">
-  <div class="sidebar">
+  <div
+    class="sidebar"
+    ref="sidebar"
+    :class="[SidebarModule.isActive, SidebarModule.isPhoneClass]"
+  >
     <div class="img_container">
       <img src="@/assets/logo.png" />
     </div>
@@ -17,9 +21,17 @@
       </li>
     </ul>
   </div>
+  <div
+    class="sidebar-overlay"
+    :class="
+      SidebarModule.sidebarOpened && SidebarModule.isPhone ? 'active' : ''
+    "
+    @click="this.$store.dispatch('SidebarModule/toggleSidebar')"
+  ></div>
 </template>
 <script>
 import { ref } from "@vue/reactivity";
+import { mapState } from "vuex";
 export default {
   setup() {
     const navLinks = ref([
@@ -35,6 +47,30 @@ export default {
       },
     ]);
     return { navLinks };
+  },
+  computed: mapState(["SidebarModule"]),
+  methods: {
+    toggleSidebar() {
+      const sidebar = this.$refs.sidebar;
+      setTimeout(() => {
+        if (!this.SidebarModule.isPhone) {
+          console.log(this.SidebarModule.isPhone);
+          sidebar.addEventListener("mouseenter", () => {
+            this.$store.dispatch("SidebarModule/toggleSidebar");
+          });
+          sidebar.addEventListener("mouseleave", () => {
+            this.$store.dispatch("SidebarModule/toggleSidebar");
+          });
+          console.log("working");
+        } else {
+          console.log("not-working");
+          return false;
+        }
+      }, 1000);
+    },
+  },
+  mounted() {
+    this.toggleSidebar();
   },
 };
 </script>

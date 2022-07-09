@@ -8,7 +8,17 @@
   background: var(--main-bg-color)
   padding: 1rem 0rem
   overflow: hidden
+  z-index: 2
   @include mainBoxShadow
+  @include mainTransition
+  &.sidebar-visible
+    width: $sidebarWidthOpen
+  &.sidebar-over
+    transform: translateX(-100%)
+    width: $sidebarWidthOpen
+  &.sidebar-visible-over
+    transform: translateX(0%)
+
   .img_container
     width: calc( $sidebarWidth - 25px )
     height: calc( $sidebarWidth - 25px )
@@ -35,3 +45,21 @@
         justify-content: flex-end
         .icon-wrapper
           margin-right: 5px
+.sidebar-overlay
+  position: absolute
+  top: 0
+  border: 0
+  right: 0
+  left: 0
+  background: #28282824
+  backdrop-filter: blur(2px)
+  z-index: 1
+  bottom: 0
+  visibility: hidden
+  opacity: 0
+  pointer-events: none
+  @include mainTransition
+  &.active
+    visibility: visible
+    opacity: 1
+    pointer-events: all

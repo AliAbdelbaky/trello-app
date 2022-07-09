@@ -9,6 +9,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("ThemeModule/initTheme");
+    this.$store.dispatch("SidebarModule/initSidebarTheme");
   },
 };
 </script>

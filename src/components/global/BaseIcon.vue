@@ -1,6 +1,6 @@
 <template>
   <div class="icon-wrapper">
-    <div v-html="svg"></div>
+    <div class="icon" v-html="svg"></div>
     <slot></slot>
   </div>
 </template>
@@ -48,5 +48,6 @@ export default {
   stroke-linejoin: round;
   fill: none;
   margin-right: 6px;
+  display: flex;
 }
 </style>

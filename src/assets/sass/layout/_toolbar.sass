@@ -12,47 +12,62 @@
     padding: 0.5rem
     display: flex
     flex-direction: row-reverse
-    justify-content: flex-start
-    gap: 10px
-    .user-info
+    justify-content: space-between
+    .tooltips
+      flex: 1 1 auto
       display: flex
-      flex-direction: row-reverse
+      align-items: center
       justify-content: flex-start
-      align-items: center
-      text-align: right
-      color: var(--sec-font-color)
-      font-size: 14px
-      .user-info-img-container
-        position: relative
-        height: fit-content
+      flex-direction: row-reverse
+      gap: 10px
+      .user-info
         display: flex
-        img
-          border: 1px solid var(--main-bg-color)
-          width: 40px
-          height: 40px
-          object-fit: cover
-          border-radius: 50%
-        &::after
-          content: ""
-          position: absolute
-          bottom: 2px
-          right: 0
-          width: 10px
-          line-height: inherit
-          height: 10px
-          border-radius: 50%
-          border: 2px solid var(--main-bg-color)
-          background: #28c76f
-          z-index: 55
-      .user-info-desc
-        margin-right: 4px
-        .user-name
-          font-weight: 600
-          text-transform: capitalize
-        .user-title
-          opacity: 0.8
-          text-transform: lowercase
-    .theme-toggler
+        flex-direction: row-reverse
+        justify-content: flex-start
+        align-items: center
+        text-align: right
+        color: var(--sec-font-color)
+        font-size: 14px
+        .user-info-img-container
+          position: relative
+          height: fit-content
+          display: flex
+          img
+            border: 1px solid var(--main-bg-color)
+            width: 40px
+            height: 40px
+            object-fit: cover
+            border-radius: 50%
+          &::after
+            content: ""
+            position: absolute
+            bottom: 2px
+            right: 0
+            width: 10px
+            line-height: inherit
+            height: 10px
+            border-radius: 50%
+            border: 2px solid var(--main-bg-color)
+            background: #28c76f
+            z-index: 55
+        .user-info-desc
+          margin-right: 4px
+          .user-name
+            font-weight: 600
+            text-transform: capitalize
+          .user-title
+            opacity: 0.8
+            text-transform: lowercase
+      .theme-toggler
+        display: flex
+        align-items: center
+        cursor: pointer
+    .sidebar-toggler
+      background: transparent
+      outline: none
+      border: none
       display: flex
       align-items: center
-      cursor: pointer
+      display: none
+      @media screen and ( max-width: 850px )
+        display: flex
