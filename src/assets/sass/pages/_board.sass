@@ -13,20 +13,53 @@
       min-width: 350px
       .tasks-list
         .task
+          @include mainBoxShadow
+          @include mainTransition
           background: rgba(var(--main-bg-color), 1 )
           border-radius: 5px
-          @include mainBoxShadow
           padding: 5px 10px
           margin-bottom: 0.6rem
           display: flex
           flex-direction: column
+          cursor: pointer
           .title,.desc
             font-weight: 600
             text-transform: capitalize
             min-width: 100%
             display: block
           .desc
-            margin: 0.4rem 0rem 
+            margin: 0.4rem 0rem
             font-weight: 400
             font-size: 13px
-
+          &:hover
+            transform: scale(0.98)
+  .task-bg
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 999
+    background: #21252929
+    backdrop-filter: blur(2px)
+    display: flex
+    align-items: center
+    justify-content: center
+    .task
+      @include mainBoxShadow
+      background: rgba(var(--main-bg-color), 1 )
+      border-radius: 5px
+      padding: 5px 10px
+      margin-bottom: 0.6rem
+      display: flex
+      flex-direction: column
+      min-width: 300px
+      .title,.desc
+        font-weight: 600
+        text-transform: capitalize
+        min-width: 100%
+        display: block
+      .desc
+        margin: 0.4rem 0rem
+        font-weight: 400
+        font-size: 13px

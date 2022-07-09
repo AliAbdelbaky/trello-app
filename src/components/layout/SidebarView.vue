@@ -40,11 +40,11 @@ export default {
         title: "board",
         icon: "clipboard",
       },
-      {
-        name: "about",
-        title: "about",
-        icon: "",
-      },
+      // {
+      //   name: "about",
+      //   title: "about",
+      //   icon: "",
+      // },
     ]);
     return { navLinks };
   },
@@ -54,16 +54,13 @@ export default {
       const sidebar = this.$refs.sidebar;
       setTimeout(() => {
         if (!this.SidebarModule.isPhone) {
-          console.log(this.SidebarModule.isPhone);
           sidebar.addEventListener("mouseenter", () => {
             this.$store.dispatch("SidebarModule/toggleSidebar");
           });
           sidebar.addEventListener("mouseleave", () => {
             this.$store.dispatch("SidebarModule/toggleSidebar");
           });
-          console.log("working");
         } else {
-          console.log("not-working");
           return false;
         }
       }, 1000);
