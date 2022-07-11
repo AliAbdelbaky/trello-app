@@ -40,6 +40,7 @@
             font-size: 13px
           .delete-task
             @include mainTransition
+            transition-delay: 500ms
             position: absolute
             top: 0
             right: 0
@@ -59,11 +60,12 @@
                 svg
                   stroke: #d90427d8 !important
 
-      .add_task_input
+      .add_task_input,.add_column_input
         background: transparent
         padding: 10px
         outline: none
         border: none
+
   .task-bg
     position: fixed
     top: 0

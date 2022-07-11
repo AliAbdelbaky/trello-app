@@ -4,7 +4,9 @@
       class="column"
       v-for="(column, $columnIndex) in columns"
       :key="$columnIndex"
-      @drop="moveTask($event, column.tasks)"
+      draggable="true"
+      @drop="moveTaskOrColumn($event, column.tasks, $columnIndex)"
+      @dragstart.self="pickupColumn($event, $columnIndex)"
       @dragover.prevent
       @dragenter.prevent
     >
@@ -18,6 +20,11 @@
               :key="$taskIndex"
               draggable="true"
               @dragstart="pickupTask($event, $taskIndex, $columnIndex)"
+              @dragover.prevent
+              @dragenter.prevent
+              @drop.stop="
+                moveTaskOrColumn($event, column.tasks, $columnIndex, $taskIndex)
+              "
             >
               <div class="wraaper" @click="goToTask(task.id)">
                 <span class="title">
@@ -45,11 +52,30 @@
         />
       </div>
     </div>
+    <div class="column">
+      <div class="card">
+        <div class="card-header">
+          <input
+            type="text"
+            class="add_column_input"
+            v-model="columnName"
+            placeholder="+ Enter new list"
+            @keyup.enter="createColumn"
+            @blur="createColumn"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   props: ["columns"],
+  data() {
+    return {
+      columnName: "",
+    };
+  },
   methods: {
     goToTask(id) {
       this.$router.push({ name: "task", params: { id: id } });
@@ -65,6 +91,14 @@ export default {
       }
       e.target.value = "";
     },
+    createColumn() {
+      if (!this.columnName == "") {
+        this.$store.commit("BoardModule/ADD_COLUMN", this.columnName);
+      } else {
+        return;
+      }
+      this.columnName = "";
+    },
     deleteTask(taskIndex, columnIndex) {
       this.$router.push({ name: "board" });
       this.$store.commit("BoardModule/REMOVE_TASK", {
@@ -78,13 +112,41 @@ export default {
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setData("task-index", taskIndex);
       e.dataTransfer.setData("from-column-index", fromColumnIndex);
+      e.dataTransfer.setData("type", "task");
     },
-    moveTask(e, toTasks) {
+    pickupColumn(e, columnIndex) {
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.dropEffect = "move";
+
+      e.dataTransfer.setData("from-column-index", columnIndex);
+      e.dataTransfer.setData("type", "column");
+    },
+    moveTaskOrColumn(e, toTasks, toColumnIndex, toTaskIndex) {
+      const type = e.dataTransfer.getData("type");
+      if (type === "task") {
+        this.moveTask(
+          e,
+          toTasks,
+          toTaskIndex !== undefined ? toTaskIndex : toTasks.length
+        );
+      } else {
+        this.moveColumn(e, toColumnIndex);
+      }
+    },
+    moveColumn(e, toColumnIndex) {
+      const fromColumnIndex = e.dataTransfer.getData("from-column-index");
+      this.$store.commit("BoardModule/MOVE_COLUMN", {
+        fromColumnIndex,
+        toColumnIndex,
+      });
+    },
+    moveTask(e, toTasks, toTaskIndex) {
       const fromColumnIndex = e.dataTransfer.getData("from-column-index");
       const fromTasks = this.columns[fromColumnIndex].tasks;
       const taskIndex = e.dataTransfer.getData("task-index");
       this.$store.commit("BoardModule/MOVE_TASK", {
         fromTasks,
+        toTaskIndex,
         toTasks,
         taskIndex,
       });

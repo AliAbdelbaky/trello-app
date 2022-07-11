@@ -1,12 +1,12 @@
-import { uuid } from './utils'
+import {
+  uuid
+} from './utils'
 
 export default {
   name: 'workshop',
-  columns: [
-    {
+  columns: [{
       name: 'todo',
-      tasks: [
-        {
+      tasks: [{
           description: '',
           name: 'first task',
           id: uuid(),
@@ -28,80 +28,39 @@ export default {
     },
     {
       name: 'in-progress',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
+      tasks: [{
+        description: '',
+        name: 'first task',
+        id: uuid(),
+        userAssigned: null
+      }]
     },
     {
       name: 'done',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
+      tasks: [{
+        description: '',
+        name: 'first task',
+        id: uuid(),
+        userAssigned: null
+      }]
     },
     {
-      name: 'done',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
+      name: 'doing',
+      tasks: [{
+        description: '',
+        name: 'first task',
+        id: uuid(),
+        userAssigned: null
+      }]
     },
     {
-      name: 'done',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
-    },
-    {
-      name: 'done',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
-    },
-    {
-      name: 'done',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
-    },
-    {
-      name: 'done',
-      tasks: [
-        {
-          description: '',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
+      name: 'testing',
+      tasks: [{
+        description: '',
+        name: 'first task',
+        id: uuid(),
+        userAssigned: null
+      }]
     },
   ]
 }

@@ -26,6 +26,12 @@ export const mutations = {
       description: ''
     })
   },
+  ADD_COLUMN(state, columnName) {
+    state.board.columns.push({
+      name: columnName,
+      tasks: []
+    })
+  },
   REMOVE_TASK(state, {
     taskIndex,
     columnIndex,
@@ -43,10 +49,19 @@ export const mutations = {
   MOVE_TASK(state, {
     fromTasks,
     toTasks,
-    taskIndex
+    taskIndex,
+    toTaskIndex
   }) {
     const taskToMove = fromTasks.splice(taskIndex, 1)[0]
-    toTasks.push(taskToMove)
+    toTasks.splice(toTaskIndex, 0, taskToMove)
+  },
+  MOVE_COLUMN(state, {
+    fromColumnIndex,
+    toColumnIndex
+  }) {
+    const columnList = state.board.columns
+    const columnToMove = columnList.splice(fromColumnIndex, 1)[0]
+    columnList.splice(toColumnIndex, 0, columnToMove)
   }
 }
 export const actions = {
