@@ -13,35 +13,11 @@
       <div class="card">
         <div class="card-header">{{ column.name }}</div>
         <div class="card-body">
-          <div class="tasks-list">
-            <div
-              class="task"
-              v-for="(task, $taskIndex) in column.tasks"
-              :key="$taskIndex"
-              draggable="true"
-              @dragstart="pickupTask($event, $taskIndex, $columnIndex)"
-              @dragover.prevent
-              @dragenter.prevent
-              @drop.stop="
-                moveTaskOrColumn($event, column.tasks, $columnIndex, $taskIndex)
-              "
-            >
-              <div class="wraaper" @click="goToTask(task.id)">
-                <span class="title">
-                  {{ $taskIndex + 1 }} {{ task.name }}
-                </span>
-                <p class="desc text-small" v-if="task.description">
-                  {{ task.description }}
-                </p>
-              </div>
-              <div
-                class="delete-task"
-                @click="deleteTask($taskIndex, $columnIndex)"
-              >
-                <BaseIcon name="trash-2" />
-              </div>
-            </div>
-          </div>
+          <ColumnTask
+            :tasks="column.tasks"
+            :columnIndex="$columnIndex"
+            :columns="columns"
+          />
         </div>
         <input
           type="text"
@@ -69,17 +45,18 @@
   </div>
 </template>
 <script>
+import ColumnTask from "./ColumnTask";
 export default {
   props: ["columns"],
+  components: {
+    ColumnTask,
+  },
   data() {
     return {
       columnName: "",
     };
   },
   methods: {
-    goToTask(id) {
-      this.$router.push({ name: "task", params: { id: id } });
-    },
     createTask(e, tasks) {
       if (!e.target.value == "") {
         this.$store.commit("BoardModule/ADD_TASK", {
@@ -99,21 +76,7 @@ export default {
       }
       this.columnName = "";
     },
-    deleteTask(taskIndex, columnIndex) {
-      this.$router.push({ name: "board" });
-      this.$store.commit("BoardModule/REMOVE_TASK", {
-        taskIndex,
-        columnIndex,
-        columns: this.columns,
-      });
-    },
-    pickupTask(e, taskIndex, fromColumnIndex) {
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.dropEffect = "move";
-      e.dataTransfer.setData("task-index", taskIndex);
-      e.dataTransfer.setData("from-column-index", fromColumnIndex);
-      e.dataTransfer.setData("type", "task");
-    },
+
     pickupColumn(e, columnIndex) {
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";

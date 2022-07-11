@@ -1,6 +1,6 @@
 .board-page
   margin-top: 1rem
-  height: 88vh
+  min-height: 88vh
   .column-container
     height: 100%
     display: flex
@@ -8,7 +8,7 @@
     gap: 10px
     overflow-y: hidden
     overflow-x: scroll
-    @include scrollbars(5px, #888, #ffffff00)
+    @include scrollbars(10px, #00418b, #ffffffee)
     .column
       min-width: 350px
       .tasks-list

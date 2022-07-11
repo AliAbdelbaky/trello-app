@@ -35,9 +35,8 @@ export const mutations = {
   REMOVE_TASK(state, {
     taskIndex,
     columnIndex,
-    columns,
   }) {
-    columns[columnIndex].tasks.splice(taskIndex, 1)
+    state.board.columns[columnIndex].tasks.splice(taskIndex, 1)
   },
   UPDATE_TASK(state, {
     task,
