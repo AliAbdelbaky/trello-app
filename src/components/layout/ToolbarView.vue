@@ -3,7 +3,7 @@
     class="wrapper"
     :class="[SidebarModule.isActive, SidebarModule.isPhoneClass]"
   >
-    <nav class="toolbar">
+    <nav class="toolbar" v-if="this.$route.name !== 'login'">
       <div class="content">
         <div class="tooltips">
           <div class="user-info">

@@ -1,4 +1,5 @@
 import store from "@/store";
+import LoginView from '@/views/LoginView'
 import {
   createRouter,
   createWebHistory
@@ -22,7 +23,11 @@ const routes = [{
       }).catch((err) => alert(`error is ${err}`))
     }
   }]
-}, ];
+}, {
+  path:'/login',
+  name:'login',
+  component: LoginView
+}];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

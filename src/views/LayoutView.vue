@@ -1,6 +1,7 @@
 <template>
-  <ToolbarVue/>
-  <SidebarVue />
+  <ToolbarVue />
+  <SidebarVue v-if="this.$route.name !== 'login'" />
+  {{this.$route.name}}
 </template>
 <script>
 import ToolbarVue from '@/components/layout/ToolbarView.vue'
