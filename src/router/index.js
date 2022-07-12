@@ -58,6 +58,6 @@ router.afterEach(() => {
       val: false,
       name: store.state.UserModule.user.name
     })
-  }, 900)
+  }, 1020)
 })
 export default router;
