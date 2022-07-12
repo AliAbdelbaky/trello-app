@@ -11,14 +11,16 @@ import {
 
 export default createStore({
   plugins: [saveStatePlugin],
-  state: {},
-  getters: {},
+  state: {
+    loading: true
+  },
   mutations: {
+    REVRESE_LOADING(state, payload) {
+      state.loading = payload
+    },
 
   },
-  actions: {
-
-  },
+  actions: {},
   modules: {
     BoardModule,
     ThemeModule,

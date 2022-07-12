@@ -40,6 +40,7 @@ const router = createRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
+  store.commit('REVRESE_LOADING', true)
   if (to.meta.auth && !store.state.UserModule.user.authenticated) {
     next('/login')
   } else if (!to.meta.auth && store.state.UserModule.user.authenticated) {
@@ -47,5 +48,10 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+router.afterEach(() => {
+  setTimeout(() => {
+    store.commit('REVRESE_LOADING', false)
+  }, 900)
 })
 export default router;
