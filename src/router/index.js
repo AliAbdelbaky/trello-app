@@ -9,6 +9,9 @@ const routes = [{
   path: "/",
   name: "board",
   component: () => import("@/views/BoardView.vue"),
+  meta: {
+    auth: true
+  },
   children: [{
     path: 'task/:id',
     name: 'task',
@@ -24,14 +27,25 @@ const routes = [{
     }
   }]
 }, {
-  path:'/login',
-  name:'login',
-  component: LoginView
+  path: '/login',
+  name: 'login',
+  component: LoginView,
+  meta: {
+    auth: false
+  },
 }];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth && !store.state.UserModule.user.authenticated) {
+    next('/login')
+  } else if (!to.meta.auth && store.state.UserModule.user.authenticated) {
+    next('/')
+  } else {
+    next()
+  }
+})
 export default router;

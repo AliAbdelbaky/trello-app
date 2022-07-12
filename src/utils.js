@@ -6,6 +6,7 @@ export const saveStatePlugin = (store) => {
     (mutation, state) => {
       localStorage.setItem('boards', JSON.stringify(state.BoardModule.board))
       localStorage.setItem('user', JSON.stringify(state.UserModule.user))
+      localStorage.setItem('users', JSON.stringify(state.UserModule.users))
     }
   )
 }

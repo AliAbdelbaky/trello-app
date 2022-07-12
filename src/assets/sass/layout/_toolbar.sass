@@ -63,6 +63,27 @@
         display: flex
         align-items: center
         cursor: pointer
+      .logout-button
+        width: 30px
+        height: 30px
+        button
+          border-radius: 50%
+          background: #df1b1b29
+          align-items: center
+          justify-content: center
+          cursor: pointer
+          display: flex
+          border: none
+          outline: none
+          padding: 5px
+          @include mainTransition
+          .icon
+            margin: 0rem
+            svg
+              stroke: #df1b1b
+          &:hover
+            @include mainBoxShadow
+
     .sidebar-toggler
       background: transparent
       outline: none

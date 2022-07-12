@@ -5,7 +5,7 @@
     :class="[SidebarModule.isActive, SidebarModule.isPhoneClass]"
   >
     <div class="img_container">
-      <img src="@/assets/logo.png" />
+      <img :src="UserModule.user.img" :alt="UserModule.user.name" />
     </div>
     <ul class="nav-items">
       <li
@@ -20,6 +20,12 @@
         </router-link>
       </li>
     </ul>
+    <div class="logout-button">
+      <button @click="logout">
+        logout
+        <BaseIcon name="power" width="70px" />
+      </button>
+    </div>
   </div>
   <div
     class="sidebar-overlay"
@@ -40,15 +46,10 @@ export default {
         title: "board",
         icon: "clipboard",
       },
-      // {
-      //   name: "about",
-      //   title: "about",
-      //   icon: "",
-      // },
     ]);
     return { navLinks };
   },
-  computed: mapState(["SidebarModule"]),
+  computed: mapState(["SidebarModule", "UserModule"]),
   methods: {
     toggleSidebar() {
       const sidebar = this.$refs.sidebar;
@@ -64,6 +65,10 @@ export default {
           return false;
         }
       }, 1000);
+    },
+    logout() {
+      this.$store.dispatch("UserModule/logout");
+      this.$router.push({ name: "login" });
     },
   },
   mounted() {

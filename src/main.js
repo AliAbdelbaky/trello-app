@@ -7,7 +7,10 @@ import camelCase from 'lodash/camelCase'
 import fontawesome from "./plugins/fontawesome";
 import router from "./router";
 import store from "./store";
+import veeValidate from "@/plugins/validation";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 const app = createApp(App);
 
 app.component('AppIcon', fontawesome)
@@ -28,4 +31,4 @@ requireComponent.keys().forEach(fileName => {
 })
 
 
-app.use(store).use(router).mount("#app");
+app.use(store).use(veeValidate).use(router).mount("#app");
