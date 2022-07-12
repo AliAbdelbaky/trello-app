@@ -36,11 +36,8 @@ export default {
       return this.$route.name === 'login'
     },
     userName(){
-      return this.UserModule.user.name 
+      return this.$store.state.name
     },
-    status(){
-      return this.$store.state.status
-    }
   },
 };
 </script>

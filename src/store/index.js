@@ -12,11 +12,16 @@ import {
 export default createStore({
   plugins: [saveStatePlugin],
   state: {
-    loading: true
+    loading: true,
+    name: ''
   },
   mutations: {
-    REVRESE_LOADING(state, payload) {
-      state.loading = payload
+    REVRESE_LOADING(state, {
+      val,
+      name
+    }) {
+      state.loading = val
+      state.name = name
     },
 
   },
