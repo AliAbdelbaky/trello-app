@@ -10,22 +10,30 @@
           <div class="dropdown">
             <button
               type="button"
+              @click="openPopup(UserModule.user.id)"
             >
-              <BaseIcon name="camera" width="100%" height="100%"/>
+              <BaseIcon name="camera" width="100%" height="100%" />
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">view</a></li>
-              <li><a class="dropdown-item" href="#">upload new one</a></li>
-            </ul>
           </div>
         </div>
       </div>
+      <router-view />
     </div>
   </section>
 </template>
 <script>
 import { mapState } from "vuex";
 export default {
+  data() {
+    return {
+      popup: false,
+    };
+  },
+  methods: {
+    openPopup(id) {
+      this.$router.push({ name: "userimg", params: { id: id } });
+    },
+  },
   computed: {
     ...mapState(["UserModule"]),
   },

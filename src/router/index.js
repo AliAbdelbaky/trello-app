@@ -1,48 +1,55 @@
 import store from "@/store";
 import LoginView from '@/views/LoginView'
+import UserView from '@/views/UserView.vue'
 import {
   createRouter,
   createWebHistory
 } from "vue-router";
 
 const routes = [{
-  path: '/login',
-  name: 'login',
-  component: LoginView,
-  meta: {
-    auth: false
-  }
-}, 
-{
-  path: "/",
-  name: "board",
-  component: () => import("@/views/BoardView.vue"),
-  meta: {
-    auth: true
-  },
-  children: [{
-    path: 'task/:id',
-    name: 'task',
-    props: true,
-    component: () =>
-      import("@/views/TaskView.vue"),
-    beforeEnter: (to, from, next) => {
-      store.dispatch('BoardModule/setSingleTask', to.params.id).then(() => {
-        const single_task = store.state.BoardModule.signleTask
-        to.params.task = single_task
-        next()
-      }).catch((err) => alert(`error is ${err}`))
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+    meta: {
+      auth: false
     }
-  }]
-},
-{
-  path:'/settings',
-  name:'setting',
-  component: ()=>import('@/views/SettingView'),
-  meta: {
-    auth: true
+  },
+  {
+    path: "/",
+    name: "board",
+    component: () => import("@/views/BoardView.vue"),
+    meta: {
+      auth: true
+    },
+    children: [{
+      path: 'task/:id',
+      name: 'task',
+      props: true,
+      component: () =>
+        import("@/views/TaskView.vue"),
+      beforeEnter: (to, from, next) => {
+        store.dispatch('BoardModule/setSingleTask', to.params.id).then(() => {
+          const single_task = store.state.BoardModule.signleTask
+          to.params.task = single_task
+          next()
+        }).catch((err) => alert(`error is ${err}`))
+      }
+    }]
+  },
+  {
+    path: '/settings',
+    name: 'setting',
+    component: () => import('@/views/SettingView'),
+    meta: {
+      auth: true
+    },
+    children: [{
+      path: 'image/:id',
+      name: 'userimg',
+      props: true,
+      component: UserView
+    }]
   }
-}
 ];
 
 const router = createRouter({

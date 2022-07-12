@@ -30,6 +30,9 @@ export const mutations = {
   },
   ADD_USERS(state, data) {
     state.users.push(data)
+  },
+  DELETE_USER(state, index) {
+    state.users.splice(index, 1)
   }
 }
 export const actions = {
@@ -39,6 +42,10 @@ export const actions = {
   }, userData) {
     if (getters.isUser(userData)) {
       commit('SET_USER_DATA', userData)
+      if (getters.userIndex(userData)) {
+        commit('DELETE_USER', getters.userIndex(userData))
+        commit('ADD_USERS', userData)
+      }
     } else {
       commit('SET_USER_DATA', userData)
       commit('ADD_USERS', userData)
@@ -65,4 +72,9 @@ export const getters = {
   isUser: state => data => {
     return state.users.find(item => item.username === data.username)
   },
+  userIndex: state => data => {
+    return state.users.findIndex(item => {
+      return item.id == data.id
+    })
+  }
 }

@@ -79,6 +79,7 @@
   </section>
 </template>
 <script>
+import { uuid } from "@/utils";
 export default {
   data() {
     return {
@@ -100,7 +101,12 @@ export default {
   },
   methods: {
     submit(formVal) {
-      const data = { ...formVal, img: this.img, authenticated: true };
+      const data = {
+        ...formVal,
+        img: this.img,
+        authenticated: true,
+        id: uuid(),
+      };
       this.$store.dispatch("UserModule/registerNewUser", data).then(() => {
         this.$router.push({ name: "board" });
       });
