@@ -6,6 +6,14 @@ import {
 } from "vue-router";
 
 const routes = [{
+  path: '/login',
+  name: 'login',
+  component: LoginView,
+  meta: {
+    auth: false
+  }
+}, 
+{
   path: "/",
   name: "board",
   component: () => import("@/views/BoardView.vue"),
@@ -26,14 +34,16 @@ const routes = [{
       }).catch((err) => alert(`error is ${err}`))
     }
   }]
-}, {
-  path: '/login',
-  name: 'login',
-  component: LoginView,
+},
+{
+  path:'/settings',
+  name:'setting',
+  component: ()=>import('@/views/SettingView'),
   meta: {
-    auth: false
-  },
-}];
+    auth: true
+  }
+}
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

@@ -6,6 +6,7 @@
   >
     <div class="img_container">
       <img :src="UserModule.user.img" :alt="UserModule.user.name" />
+      <hr/>
     </div>
     <ul class="nav-items">
       <li
@@ -45,6 +46,11 @@ export default {
         name: "board",
         title: "board",
         icon: "clipboard",
+      },
+      {
+        name: "setting",
+        title: "setting",
+        icon: "settings",
       },
     ]);
     return { navLinks };
