@@ -86,8 +86,8 @@ export default {
       req__submitions: false,
       img: "",
       schema: {
-        name: "required|min:3|max:30",
-        username: "required|min:3|max:30|alpha_spaces",
+        name: "required|min:3|max:20|alpha_spaces",
+        username: "required|min:3|max:30",
         title: "required|min:3|max:20",
         img: "required",
         password: "required|min:3|max:100",
