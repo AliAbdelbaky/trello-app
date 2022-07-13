@@ -8,7 +8,18 @@
     gap: 10px
     overflow-y: hidden
     overflow-x: scroll
-    @include scrollbars(10px, #00418b, #ffffffee)
+    &::-webkit-scrollbar
+      width: 10px
+      height: 10px
+
+    &::-webkit-scrollbar-thumb
+      background: #00418b
+      border-radius: 7px
+
+    &::-webkit-scrollbar-track
+      background: #ffffff23
+      backdrop-filter: blur(20px)
+      border-radius: 7px
     .column
       min-width: 350px
       .tasks-list
