@@ -63,6 +63,15 @@ export default {
   text-transform: capitalize;
   color: rgb(var(--sec-font-color));
 }
+@media screen and ( max-width:590px  ) {
+  .title{
+    font-size: 1rem;
+  }
+  .title span{
+    font-size: 2rem;
+  }
+  
+}
 .title span {
   font-size: 3rem;
   font-weight: normal;
