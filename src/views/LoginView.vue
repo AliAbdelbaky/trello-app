@@ -108,7 +108,10 @@ export default {
         id: uuid(),
       };
       this.$store.dispatch("UserModule/registerNewUser", data).then(() => {
-        this.$router.push({ name: "board" });
+        setTimeout(() => {
+          this.$router.push({ name: "board" });
+          console.log('welcome')
+        }, 1000);
       });
       this.req__submitions = true;
       setTimeout(() => (this.req__submitions = false), 3000);
