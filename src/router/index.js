@@ -1,5 +1,6 @@
 import store from "@/store";
 import LoginView from '@/views/LoginView'
+import RegisterView from '@/views/RegisterView'
 import UserView from '@/views/UserView.vue'
 import {
   createRouter,
@@ -10,16 +11,18 @@ const routes = [{
     path: '/login',
     name: 'login',
     component: LoginView,
-    meta: {
-      auth: false
-    }
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView,
   },
   {
     path: "/",
     name: "board",
     component: () => import("@/views/BoardView.vue"),
     meta: {
-      auth: true
+      requiresAuth: true
     },
     children: [{
       path: 'task/:id',
@@ -41,7 +44,7 @@ const routes = [{
     name: 'setting',
     component: () => import('@/views/SettingView'),
     meta: {
-      auth: true
+      requiresAuth: true
     },
     children: [{
       path: 'image/:id',
@@ -57,17 +60,21 @@ const router = createRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
+  const loggedIn = JSON.parse(localStorage.getItem('user')).authenticated
   store.commit('REVRESE_LOADING', {
     val: true,
     name: store.state.UserModule.user.name
   })
-  if (to.meta.auth && !store.state.UserModule.user.authenticated) {
-    next('/login')
-  } else if (!to.meta.auth && store.state.UserModule.user.authenticated) {
-    next('/')
-  } else {
-    next()
+  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+    next({
+      name: 'login'
+    })
+  } else if (!to.matched.some(record => record.meta.requiresAuth) && loggedIn) {
+    next({
+      name: 'board'
+    })
   }
+  next()
 })
 router.afterEach(() => {
   setTimeout(() => {
@@ -75,6 +82,6 @@ router.afterEach(() => {
       val: false,
       name: store.state.UserModule.user.name
     })
-  }, 1020)
+  }, 10)
 })
 export default router;

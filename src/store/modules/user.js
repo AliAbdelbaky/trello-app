@@ -1,3 +1,4 @@
+import router from "@/router"
 import {
   uuid
 } from "@/utils"
@@ -63,6 +64,25 @@ export const actions = {
       authenticated: false
     }
     commit('REMOVE_AUTH', emptyUser)
+  },
+  login({
+    commit,
+    state
+  }, data) {
+    if (state.users) {
+      state.users.forEach(user => {
+        if (data.username === user.username && data.password === user.password) {
+          commit('SET_USER_DATA', user)
+          console.log(user)
+        } else {
+          return
+        }
+      });
+    } else {
+      router.push({
+        name:'register'
+      })
+    }
   }
 }
 export const getters = {
