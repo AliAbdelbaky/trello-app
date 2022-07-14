@@ -72,7 +72,6 @@ export default {
   },
   methods: {
     submit(formVal) {
-      console.log(formVal);
       this.req__submitions = true;
       this.$store.dispatch("UserModule/login", formVal).then(() => {
         this.$router.push({ name: "board" });

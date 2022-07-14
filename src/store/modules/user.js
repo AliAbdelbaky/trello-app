@@ -73,7 +73,6 @@ export const actions = {
       state.users.forEach(user => {
         if (data.username === user.username && data.password === user.password) {
           commit('SET_USER_DATA', user)
-          console.log(user)
         } else {
           return
         }
