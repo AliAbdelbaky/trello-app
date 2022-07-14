@@ -52,6 +52,10 @@ const routes = [{
       props: true,
       component: UserView
     }]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: { name: 'board' }
   }
 ];
 
