@@ -72,7 +72,7 @@
           required="required"
         />
         <div class="show-pass" @click="pass_type = !pass_type">
-          <BaseIcon name="eye" v-if="pass_type" />
+          <BaseIcon name="eye" v-if="!pass_type" />
           <BaseIcon name="eye-off" v-else />
         </div>
         <ErrorMessage class="error_msg" name="password">
